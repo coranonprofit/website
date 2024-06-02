@@ -1,7 +1,13 @@
-import NavBar from "@/components/NavBar"
-import "./page.css"
-import "@/components/NavBar"
+"use client";
+
+import "./page.css";
+import NavBar from "@/components/NavBar";
 
 export default function MainPage() {
-  return <NavBar /> 
+  return (
+    <>
+      <NavBar /> 
+    </>
+  ) 
+   
 }
