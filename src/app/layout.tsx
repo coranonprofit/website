@@ -1,6 +1,7 @@
 "use client";
 import '@mantine/core/styles.css';
 import { AppShell, createTheme, Group, MantineProvider, Image, Text } from '@mantine/core';
+import Link from 'next/link';
 
 export default function RootLayout({
   children,
@@ -23,15 +24,21 @@ export default function RootLayout({
 function PageLayout(props: {
   children: any
 }) {
+
+  const links = {
+    "Home": "/",
+    "About": "/about"
+  };
+
   return <AppShell>
     <AppShell.Header>
       <Group px="md" justify='space-between' p="md">
         <Group>
-          <Image src="/logo.png" w={"xl"} />
+          <Image src="/logo.png" w={"xl"} alt="" />
           <Text>CORA</Text>
         </Group>
         <Group gap="xl">
-          {["Home", "About", "etc."].map(pageName => <Text key={pageName}>
+          {Object.entries(links).map(([pageName, pageLink]) => <Text key={pageName} component={Link} href={pageLink}>
             {pageName}
           </Text>)}
         </Group>
