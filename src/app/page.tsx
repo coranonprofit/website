@@ -4,7 +4,7 @@ import { Canvas, useFrame, ThreeElements, Vector3, useLoader } from "@react-thre
 import React from "react"
 import * as THREE from 'three'
 import { Environment, OrbitControls, ScrollControls, useScroll, Text } from "@react-three/drei";
-import "./page.css";
+import "./page.module.css";
 
 interface ImagePaneProps {
   src: string;
