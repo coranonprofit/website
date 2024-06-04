@@ -35,3 +35,7 @@ next-env.d.ts
 
 # notes
 notes
+
+# PrismaDB
+.env
+prisma/database*
