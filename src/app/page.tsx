@@ -64,7 +64,7 @@ function Scene() {
 }
 
 export default function MainPage() {
-  return <Canvas style={{ width: '100%', height: '100vh' }}>
+  return <Canvas>
     <OrbitControls enableZoom={false} enablePan={false} />
     <Environment preset="dawn" />
     <ScrollControls pages={5} damping={0.3}>
