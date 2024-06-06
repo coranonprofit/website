@@ -1,17 +1,24 @@
 :root{
     --theme-primary: rgb(245, 131, 55);
     --background-primary: rgb(0,0,0);
-    --text-font: "Open Sans"; 
+    --background-secondary: rgb(255,255,255);
+    /* these fonts are imported in the root layout, this is a placeholder.
+    --text-font: "Open Sans";
+    --text-font-heavy: "Oswald";
+    */
+    --text-font-size: 13pt;
+    --text-color: black; 
 }
 html, body {
     margin: 0px;
     font-family: var(--text-font);
+    font-size: var(--text-font-size);
 }
 *, *::before, *::after {
    box-sizing: border-box; 
 }
 button {
     font-family: var(--text-font);
-    font-size: 1rem;
+    font-size: var(--text-font-size);
     background: none;
 }
