@@ -4,7 +4,7 @@
     width: 100%;
     height: min-content;
     background: var(--theme-primary);
-    padding: 100px 375px;
+    padding: 50px 375px 100px;
 }
 .top {
     display:grid;
@@ -24,6 +24,7 @@
     line-height: 45px;
 }
 .tax {
+    padding-top: 30px;
     width: 100%;
     max-width: 350px;
     text-align: center;
@@ -51,10 +52,11 @@
     margin-top: 50px
 }
 .disclaimer > strong {
+    font-weight: 400;
     display: block;
     font-family: var(--text-font-heavy);
-    margin-bottom: 24px;
-    font-size: 14pt;
+    margin-bottom: 16px;
+    font-size: 17pt;
 }
 .disclaimer > small {
     display: block;

@@ -19,6 +19,7 @@ html, body {
 }
 button {
     font-family: var(--text-font);
-    font-size: var(--text-font-size);
+    font-size: inherit;
     background: none;
+    border: none;
 }
