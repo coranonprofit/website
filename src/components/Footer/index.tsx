@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <section className={style.main}>
+        <footer className={style.main}>
             <div className={style.top}>
                 <p className={style.info}>
                     <strong>CORA</strong> <br />
@@ -41,6 +41,6 @@ export default function Footer() {
                     CORA branches are separate legal entities and CORA is not liable for their operations.
                 </small> 
             </div>
-        </section>
+        </footer>
     )
 }

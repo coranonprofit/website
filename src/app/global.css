@@ -23,3 +23,6 @@ button {
     background: none;
     border: none;
 }
+iframe {
+    border: none;
+}
