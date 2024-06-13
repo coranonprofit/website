@@ -90,6 +90,17 @@
         font-weight: 500;
         font-size: 50px;
         margin: 16px 0;
+        transition: 
+            transform 0.25s ease-out,
+            text-shadow 0.2s ease-out;
+
+        &:hover {
+            transform: translateY(-2px);
+            transition: 
+                transform 0.1s ease-out,
+                text-shadow 0.15s ease-in;
+            text-shadow: 0 0 56px rgba(0,0,0,0.1);
+        }
     }
 
     & > p {

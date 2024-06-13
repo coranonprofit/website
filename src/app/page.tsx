@@ -66,7 +66,7 @@ export default function MainPage() {
             <div>
               <Image src="/images/coraInNews.png" alt="CORA in the news" fill />
             </div>
-            <Link href="google.com">
+            <Link href="https://www.wdio.com/front-page/top-stories/students-from-cora-group-collected-items-for-proctor-food-shelf/">
               <h3>CORA in the news</h3>
             </Link>
 
@@ -83,7 +83,7 @@ export default function MainPage() {
             <div>
               <Image src="/images/group3.jpg" alt="Group photo 3" fill />
             </div>
-            <Link href="google.com">
+            <Link href="/join">
               <h3>Start a branch today</h3>
             </Link>
             
