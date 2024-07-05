@@ -1,6 +1,6 @@
 "use client";
 
-import { Canvas, useFrame, ThreeElements, Vector3, useLoader } from "@react-three/fiber";
+import { Canvas, useFrame, Vector3, useLoader } from "@react-three/fiber";
 import React from "react"
 import * as THREE from 'three'
 import { Environment, OrbitControls, ScrollControls, useScroll, Text } from "@react-three/drei";
