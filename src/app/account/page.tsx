@@ -13,8 +13,8 @@ export default function AccountPage() {
 
         <Fieldset legend="Account Details">
             <Stack>
-                <Text>Name: {session?.user?.name}</Text>
-                <Text>Email: {session?.user?.email}</Text>
+                <Text><b>Name</b>: {session?.user?.name}</Text>
+                <Text><b>Email</b>: {session?.user?.email}</Text>
             </Stack>
         </Fieldset>
     </Container>
