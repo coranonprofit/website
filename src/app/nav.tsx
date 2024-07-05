@@ -53,6 +53,7 @@ function AccountManager() {
         </MenuTarget>
         <MenuDropdown>
             <MenuLabel>Hello, {session?.user?.name}</MenuLabel>
+            <MenuItem component={Link} href="/account">My Account</MenuItem>
             <MenuItem onClick={() => signOut()}>Logout</MenuItem>
         </MenuDropdown>
     </Menu>
