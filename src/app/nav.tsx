@@ -5,10 +5,14 @@ import { Avatar, Button, MantineProvider, Menu, MenuDropdown, MenuItem, MenuLabe
 import { AppShell, AppShellHeader, AppShellMain, Group, Image, Text } from "@mantine/core";
 import Link from "next/link";
 import { signIn, signOut, useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 export function PageLayout(props: {
     children: any
 }) {
+
+    const router = useRouter();
+
     const links = {
         "Home": "/",
         "About": "/about"
@@ -20,7 +24,7 @@ export function PageLayout(props: {
         >
             <AppShellHeader>
                 <Group px="md" justify='space-between' p="md">
-                    <Group>
+                    <Group onClick={() => router.push("/")}>
                         <Image src="/logo.png" w={"xl"} alt="" />
                         <Text>CORA</Text>
                     </Group>
