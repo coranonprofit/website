@@ -28,12 +28,42 @@ function ExampleScene(props: {
   page: number,
   scroll: number
 }) {
-  return <Text>Page {props.page}: {props.scroll * 10}</Text>
+  const label = <Text>Page {props.page}: {Math.round(props.scroll * 10)}</Text>
+
+  switch (props.page) {
+    case 1:
+      return <>
+        {label}
+        <ImagePane src="/photos/photo1.jpg" position={[0, props.scroll, 0]} />
+      </>;
+    case 2:
+      return <>
+        {label}
+        <ImagePane src="/photos/photo1.jpg" position={[0, -props.scroll, 0]} />
+      </>;
+    case 3:
+      return <>
+        {label}
+        <ImagePane src="/photos/photo1.jpg" position={[0, 0, props.scroll]} />
+      </>;
+    case 4:
+      return <>
+        {label}
+        <ImagePane src="/photos/photo1.jpg" position={[0, 0, -props.scroll]} />
+      </>;
+      case 5:
+        return <>
+        {label}
+        <ImagePane src="/photos/photo1.jpg" position={[props.scroll, 0, 0]} />
+      </>;
+    default:
+      return label;
+  }
 }
 
 function SceneController() {
 
-  const scenes = [
+  const pages = [
     () => <Text>You found an easter egg!</Text>,
     ExampleScene,
     ExampleScene,
@@ -52,7 +82,7 @@ function SceneController() {
     setPage(Math.max(Math.ceil(scrollHook.offset * scrollHook.pages), 1));
   });
 
-  return scenes[page]({page: page, scroll: scroll});
+  return pages[page]({ page: page, scroll: scroll });
 
 }
 

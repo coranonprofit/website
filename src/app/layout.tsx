@@ -31,8 +31,8 @@ function PageLayout(props: {
   };
 
   return <AppShell
-    header={{height: '4rem', offset: true}}
-    >
+    header={{ height: '4rem', offset: true }}
+  >
     <AppShell.Header>
       <Group px="md" justify='space-between' p="md">
         <Group>
@@ -47,6 +47,8 @@ function PageLayout(props: {
       </Group>
     </AppShell.Header>
 
-    <AppShell.Main style={{width: '100%', maxHeight: '100vh', height: '90vh'}}>{props.children}</AppShell.Main>
+    <AppShell.Main style={{ width: '100%', maxHeight: '100vh', height: '90vh' }}>
+      {props.children}
+    </AppShell.Main>
   </AppShell>
 }
