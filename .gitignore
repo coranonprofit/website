@@ -39,3 +39,4 @@ notes
 # PrismaDB
 .env
 prisma/database*
+prisma/dev.db
