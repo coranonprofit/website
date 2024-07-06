@@ -2,32 +2,32 @@
 This is the CORA website.
 
 
-## TODO List
+## Site outline
 
-    Landing Page
-        3D Animation
-    Contact Page
-    FAQ Page
-        Same design as existing FAQ page: https://www.coranonprofit.org/about-us/faqs
-        Use mantine accordians
-    Donate Page
-        The planning document says that this should be done entirely on the website- which is a *very* bad idea
-    Start a branch page
+    Public-facing Pages
+        See all branches
 
-    Login Page
+    Branch Member Page
+        View all branches/member pages
+        Manage personal event photos
+            Upload Photos
+            View Photos
 
-    Profile page
-        Disable Account
-        Change password
-        Change info [contact information and such]
-        Switch branch
-    Login history page
+    Branch Admin Page
+        Manage branch info
+            Edit signup forms, contact info, etc.
+        Manage branch members
+            Add/remove members
+        Manage branch events
+            Manage event photos
+        Manage branch posts (if those are added)
 
-    Branch pages
-    Branch management pages
-
-    Admin dashboard
+    Organization Admin Page
         Manage branches
-        Manage users
-        Server status tab
-        Statistics of some kind
+            Add new branches
+        Manage website
+            Add announcement banners
+            Change settings (?)
+        Manage Users
+            Manage ownership of branches
+            Ban users who violate rules
