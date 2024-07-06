@@ -1,8 +1,8 @@
 "use server";
 
-import { getServerSession } from "next-auth";
+import { auth } from "./auth";
 import { PageLayout } from "./nav";
-import SessionProvider from "./auth";
+import { SessionProvider } from "next-auth/react";
 
 export default async function RootLayout({
   children,
@@ -10,7 +10,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const session = await getServerSession();
+  const session = await auth();
 
   return (
     <html lang="en">
