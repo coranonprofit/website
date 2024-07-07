@@ -1,6 +1,6 @@
 "use client";
 
-import { Avatar, Button, ButtonGroup, Center, Container, Loader, Select, Stack, Table, TableTbody, TableTd, TableTh, TableThead, TableTr } from "@mantine/core";
+import { Avatar, Button, ButtonGroup, Center, Checkbox, Container, Loader, Select, Stack, Table, TableTbody, TableTd, TableTh, TableThead, TableTr } from "@mantine/core";
 import React from "react";
 import { getAllBranches, getAllUsers, updateUser } from "./serverutil";
 import { useForm } from "@mantine/form";
@@ -19,6 +19,7 @@ function UserEditForm(props: { user: any, branches: any[] }) {
 
     return <Stack>
         <Select label="Branch" data={props.branches.map(branch => ({ label: branch.name, value: branch.id }))} {...form.getInputProps("branchId")} />
+        <Checkbox label="Administrator" {...form.getInputProps('admin', { type: 'checkbox' })} />
         <Button onClick={onSubmit}>Update User</Button>
     </Stack>
 }
