@@ -2,7 +2,7 @@
 
 import { Button, ButtonGroup, Loader, Stack, Table, TableTbody, TableTd, TableTh, TableThead, TableTr, TextInput, Title } from "@mantine/core";
 
-import { createBranch, getAllBranches } from "./serverutil";
+import { createBranch, getAllBranches, updateBranch } from "./serverutil";
 import { modals } from "@mantine/modals";
 
 import { useForm } from '@mantine/form';
@@ -27,6 +27,23 @@ function CreateBranchForm() {
     </Stack>
 }
 
+function EditBranchForm(props: { branch: any }) {
+    const form = useForm({
+        mode: 'uncontrolled',
+        initialValues: props.branch
+    });
+
+    const onSubmit = () => {
+        updateBranch(form.getValues());
+        modals.closeAll();
+    };
+
+    return <Stack>
+        <TextInput label="Name" description="The name of the branch" {...form.getInputProps('name')} />
+        <Button onClick={onSubmit}>Update branch</Button>
+    </Stack>
+}
+
 export default function BranchManagement() {
     const [branches, setBranches] = React.useState<any[] | undefined>(undefined);
 
@@ -39,7 +56,10 @@ export default function BranchManagement() {
 
     const createBranchModal = () => {
         modals.open({ title: "Create new branch", size: "xl", children: <CreateBranchForm />, onClose: () => getAllBranches().then(setBranches) })
+    };
 
+    const editBranchModal = (branch: any) => {
+        modals.open({ title: "Edit Branch", size: "xl", children: <EditBranchForm branch={branch} />, onClose: () => getAllBranches().then(setBranches) })
     };
 
     return <Stack align="end">
@@ -58,9 +78,8 @@ export default function BranchManagement() {
                     <TableTd>{branch.name}</TableTd>
                     <TableTd>
                         <ButtonGroup>
-                            {/* TODO */}
-                            <Button>Edit</Button>
-                            <Button variant="filled" color="red">Delete</Button>
+                            <Button onClick={() => editBranchModal(branch)}>Edit</Button>
+                            <Button variant="filled" color="red">Delete</Button> {/* TODO */}
                         </ButtonGroup>
                     </TableTd>
                 </TableTr>)}
