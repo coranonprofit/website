@@ -1,8 +1,8 @@
 "use client";
 
-import { Button, ButtonGroup, Loader, Stack, Table, TableTbody, TableTd, TableTh, TableThead, TableTr, TextInput, Title } from "@mantine/core";
+import { Button, ButtonGroup, Loader, Stack, Table, TableTbody, TableTd, TableTh, TableThead, TableTr, Text, TextInput, Title } from "@mantine/core";
 
-import { createBranch, getAllBranches, updateBranch } from "./serverutil";
+import { createBranch, deleteBranch, getAllBranches, updateBranch } from "./serverutil";
 import { modals } from "@mantine/modals";
 
 import { useForm } from '@mantine/form';
@@ -62,6 +62,22 @@ export default function BranchManagement() {
         modals.open({ title: "Edit Branch", size: "xl", children: <EditBranchForm branch={branch} />, onClose: () => getAllBranches().then(setBranches) })
     };
 
+    const deleteBranchModal = (branch: any) => {
+        modals.openConfirmModal({
+            title: "Are you sure you want to delete this branch?",
+            children: <Text>
+                If you proceed, almost all data pertaining to the branch '{branch.name}' will be removed from the server.
+                This operation is <b>NOT</b> reversable.
+                <b>You cannot undo this.</b>
+            </Text>,
+            labels: { confirm: "Yes, I am sure.", cancel: "WAIT!" },
+            onConfirm: () => {
+                deleteBranch(branch.id);
+                getAllBranches().then(setBranches);
+            }
+        });
+    };
+
     return <Stack align="end">
         <Button onClick={createBranchModal}>Create a new branch</Button>
         <Table>
@@ -79,7 +95,7 @@ export default function BranchManagement() {
                     <TableTd>
                         <ButtonGroup>
                             <Button onClick={() => editBranchModal(branch)}>Edit</Button>
-                            <Button variant="filled" color="red">Delete</Button> {/* TODO */}
+                            <Button variant="filled" color="red" onClick={() => deleteBranchModal(branch)}>Delete</Button>
                         </ButtonGroup>
                     </TableTd>
                 </TableTr>)}

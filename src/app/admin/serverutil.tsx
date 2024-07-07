@@ -25,3 +25,11 @@ export async function updateBranch(branch: any) {
         data: branch
     });
 }
+
+export async function deleteBranch(branchId: string) {
+    return await prismaClient.branch.delete({
+        where: {
+            id: branchId
+        }
+    });
+}
