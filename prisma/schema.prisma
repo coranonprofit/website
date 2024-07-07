@@ -8,16 +8,18 @@ generator client {
 }
 
 model User {
-  id            String         @id @default(cuid())
+  id            String    @id @default(cuid())
   name          String?
-  email         String?        @unique
+  email         String?   @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
-  memberships   BranchMember[]
   photos        Photo[]
-  admin         Boolean        @default(false)
+  admin         Boolean   @default(false)
+
+  branchId String?
+  branch   Branch? @relation(fields: [branchId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -68,20 +70,8 @@ model Branch {
   id   String @id @unique @default(cuid())
   name String @unique
 
-  members BranchMember[]
+  members User[]
   events  BranchEvent[]
-}
-
-model BranchMember {
-  userId   String
-  branchId String
-  role     String
-  owner    Boolean @default(false)
-
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  branch Branch @relation(fields: [branchId], references: [id], onDelete: NoAction)
-
-  @@unique([userId, branchId])
 }
 
 model BranchEvent {
