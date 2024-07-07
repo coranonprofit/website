@@ -2,7 +2,7 @@
 
 import { Button, ButtonGroup, Loader, Stack, Table, TableTbody, TableTd, TableTh, TableThead, TableTr, Text, TextInput, Title } from "@mantine/core";
 
-import { createBranch, deleteBranch, getAllBranches, updateBranch } from "./serverutil";
+import { createBranch, deleteBranch, getAllBranches, getAllUsers, updateBranch } from "./serverutil";
 import { modals } from "@mantine/modals";
 
 import { useForm } from '@mantine/form';
@@ -46,12 +46,14 @@ function EditBranchForm(props: { branch: any }) {
 
 export default function BranchManagement() {
     const [branches, setBranches] = React.useState<any[] | undefined>(undefined);
+    const [users, setUsers] = React.useState<any[] | undefined>(undefined);
 
     React.useEffect(() => {
         getAllBranches().then(setBranches);
+        getAllUsers().then(setUsers);
     }, []);
 
-    if (branches == undefined) return <Loader />
+    if (branches == undefined || users == undefined) return <Loader />
 
     const createBranchModal = () => {
         modals.open({ title: "Create new branch", size: "xl", children: <CreateBranchForm />, onClose: () => getAllBranches().then(setBranches) })
@@ -84,6 +86,7 @@ export default function BranchManagement() {
                 <TableTr>
                     <TableTh>ID</TableTh>
                     <TableTh>Name</TableTh>
+                    <TableTh>Members</TableTh>
                     <TableTh>Actions</TableTh>
                 </TableTr>
             </TableThead>
@@ -91,6 +94,7 @@ export default function BranchManagement() {
                 {branches.map(branch => <TableTr key={branch.id}>
                     <TableTd>{branch.id}</TableTd>
                     <TableTd>{branch.name}</TableTd>
+                    <TableTd>{users.filter(user => user.branchId == branch.id).length}</TableTd>
                     <TableTd>
                         <ButtonGroup>
                             <Button onClick={() => editBranchModal(branch)}>Edit</Button>
