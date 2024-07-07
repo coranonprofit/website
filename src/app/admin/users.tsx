@@ -1,8 +1,27 @@
 "use client";
 
-import { Avatar, Center, Container, Loader, Table, TableTbody, TableTd, TableTh, TableThead, TableTr } from "@mantine/core";
+import { Avatar, Button, ButtonGroup, Center, Container, Loader, Select, Stack, Table, TableTbody, TableTd, TableTh, TableThead, TableTr } from "@mantine/core";
 import React from "react";
-import { getAllBranches, getAllUsers } from "./serverutil";
+import { getAllBranches, getAllUsers, updateUser } from "./serverutil";
+import { useForm } from "@mantine/form";
+import { modals } from "@mantine/modals";
+
+function UserEditForm(props: { user: any, branches: any[] }) {
+    const form = useForm({
+        mode: 'uncontrolled',
+        initialValues: props.user
+    });
+
+    const onSubmit = () => {
+        updateUser(form.getValues())
+        modals.closeAll();
+    };
+
+    return <Stack>
+        <Select label="Branch" data={props.branches.map(branch => ({ label: branch.name, value: branch.id }))} {...form.getInputProps("branchId")} />
+        <Button onClick={onSubmit}>Update User</Button>
+    </Stack>
+}
 
 export default function UserManagement() {
 
@@ -16,6 +35,10 @@ export default function UserManagement() {
 
     if (!users || !branches) return <Center><Loader /></Center>
 
+    const editUserModal = (user: any) => {
+        modals.open({ title: `Edit ${user.name}`, size: "xl", children: <UserEditForm user={user} branches={branches} />, onClose: () => getAllUsers().then(setUsers) })
+    };
+
     return <Table>
         <TableThead>
             <TableTr>
@@ -23,6 +46,7 @@ export default function UserManagement() {
                 <TableTh>Name</TableTh>
                 <TableTh>Email</TableTh>
                 <TableTh>Branch</TableTh>
+                <TableTh>Actions</TableTh>
             </TableTr>
         </TableThead>
         <TableTbody>
@@ -31,6 +55,9 @@ export default function UserManagement() {
                 <TableTd>{user.name}</TableTd>
                 <TableTd>{user.email}</TableTd>
                 <TableTd>{branches.find(branch => branch.id == user.branchId)?.name}</TableTd>
+                <TableTd>
+                    <Button onClick={() => editUserModal(user)}>Edit</Button>
+                </TableTd>
             </TableTr>)}
         </TableTbody>
     </Table>

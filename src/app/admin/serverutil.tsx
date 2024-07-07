@@ -36,3 +36,12 @@ export async function deleteBranch(branchId: string) {
 export async function getAllUsers() {
     return await prismaClient.user.findMany();
 }
+
+export async function updateUser(user: any) {
+    return await prismaClient.user.update({
+        where: {
+            id: user.id
+        },
+        data: user
+    })
+}
