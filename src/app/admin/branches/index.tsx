@@ -1,12 +1,13 @@
 "use client";
 
-import { Button, ButtonGroup, Loader, Stack, Table, TableTbody, TableTd, TableTh, TableThead, TableTr, Text, TextInput, Title } from "@mantine/core";
+import { Button, ButtonGroup, Loader, Stack, Table, TableTbody, TableTd, TableTh, TableThead, TableTr, Text, TextInput } from "@mantine/core";
 
-import { createBranch, deleteBranch, getAllBranches, getAllUsers, updateBranch } from "./serverutil";
+import { createBranch, deleteBranch, updateBranch } from "../serverutil";
 import { modals } from "@mantine/modals";
 
 import { useForm } from '@mantine/form';
 import React from "react";
+import { useAdminData } from "../hooks";
 
 function CreateBranchForm() {
     const form = useForm({
@@ -45,22 +46,16 @@ function EditBranchForm(props: { branch: any }) {
 }
 
 export default function BranchManagement() {
-    const [branches, setBranches] = React.useState<any[] | undefined>(undefined);
-    const [users, setUsers] = React.useState<any[] | undefined>(undefined);
-
-    React.useEffect(() => {
-        getAllBranches().then(setBranches);
-        getAllUsers().then(setUsers);
-    }, []);
+    const { branches, users, refreshBranches } = useAdminData();
 
     if (branches == undefined || users == undefined) return <Loader />
 
     const createBranchModal = () => {
-        modals.open({ title: "Create new branch", size: "xl", children: <CreateBranchForm />, onClose: () => getAllBranches().then(setBranches) })
+        modals.open({ title: "Create new branch", size: "xl", children: <CreateBranchForm />, onClose: refreshBranches })
     };
 
     const editBranchModal = (branch: any) => {
-        modals.open({ title: "Edit Branch", size: "xl", children: <EditBranchForm branch={branch} />, onClose: () => getAllBranches().then(setBranches) })
+        modals.open({ title: "Edit Branch", size: "xl", children: <EditBranchForm branch={branch} />, onClose: refreshBranches })
     };
 
     const deleteBranchModal = (branch: any) => {
@@ -74,7 +69,7 @@ export default function BranchManagement() {
             labels: { confirm: "Yes, I am sure.", cancel: "WAIT!" },
             onConfirm: () => {
                 deleteBranch(branch.id);
-                getAllBranches().then(setBranches);
+                refreshBranches();
             }
         });
     };

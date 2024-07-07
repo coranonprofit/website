@@ -1,8 +1,8 @@
 //TODO: add this to the navbar, but only if the user is an admin.
 
 import { Center, Container, Tabs, TabsList, TabsPanel, TabsTab, Title } from "@mantine/core";
-import UserManagement from "./users";
-import BranchManagement from "./branches";
+import UserManagement from "./users/";
+import BranchManagement from "./branches/";
 import { auth } from "../auth";
 import { redirect } from "next/navigation";
 import { PrismaClient } from "@prisma/client";

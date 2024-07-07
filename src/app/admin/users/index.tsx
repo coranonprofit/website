@@ -1,10 +1,11 @@
 "use client";
 
-import { Avatar, Button, ButtonGroup, Center, Checkbox, Container, Loader, Select, Stack, Table, TableTbody, TableTd, TableTh, TableThead, TableTr } from "@mantine/core";
+import { Avatar, Button, Center, Checkbox, Loader, Select, Stack, Table, TableTbody, TableTd, TableTh, TableThead, TableTr } from "@mantine/core";
 import React from "react";
-import { getAllBranches, getAllUsers, updateUser } from "./serverutil";
+import { updateUser } from "../serverutil";
 import { useForm } from "@mantine/form";
 import { modals } from "@mantine/modals";
+import { useAdminData } from "../hooks";
 
 function UserEditForm(props: { user: any, branches: any[] }) {
     const form = useForm({
@@ -25,19 +26,12 @@ function UserEditForm(props: { user: any, branches: any[] }) {
 }
 
 export default function UserManagement() {
-
-    const [users, setUsers] = React.useState<any[] | undefined>(undefined);
-    const [branches, setBranches] = React.useState<any[] | undefined>(undefined);
-
-    React.useEffect(() => {
-        getAllUsers().then(setUsers);
-        getAllBranches().then(setBranches);
-    }, []);
+    const { users, branches, refreshUsers } = useAdminData();
 
     if (!users || !branches) return <Center><Loader /></Center>
 
     const editUserModal = (user: any) => {
-        modals.open({ title: `Edit ${user.name}`, size: "xl", children: <UserEditForm user={user} branches={branches} />, onClose: () => getAllUsers().then(setUsers) })
+        modals.open({ title: `Edit ${user.name}`, size: "xl", children: <UserEditForm user={user} branches={branches} />, onClose: refreshUsers })
     };
 
     return <Table>
