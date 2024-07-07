@@ -1,11 +1,15 @@
 "use client";
 import '@mantine/core/styles.css';
+import { ModalsProvider } from '@mantine/modals';
 import { Avatar, Button, MantineProvider, Menu, MenuDropdown, MenuItem, MenuLabel, MenuTarget } from '@mantine/core';
 
 import { AppShell, AppShellHeader, AppShellMain, Group, Image, Text } from "@mantine/core";
 import Link from "next/link";
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 export function PageLayout(props: {
     children: any
@@ -38,7 +42,11 @@ export function PageLayout(props: {
             </AppShellHeader>
 
             <AppShellMain style={{ width: '100%', maxHeight: '100vh', height: '90vh' }}>
-                {props.children}
+                <QueryClientProvider client={queryClient}>
+                    <ModalsProvider>
+                        {props.children}
+                    </ModalsProvider>
+                </QueryClientProvider>
             </AppShellMain>
         </AppShell>
     </MantineProvider>
@@ -47,7 +55,7 @@ export function PageLayout(props: {
 function AccountManager() {
     const { data: session } = useSession();
 
-    if(!session) {
+    if (!session) {
         return <Button onClick={() => signIn()}>Login</Button>
     }
 
