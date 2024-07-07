@@ -12,7 +12,6 @@ export async function createBranch(name: string) {
     })
 }
 
-
 export async function getAllBranches() {
     return await prismaClient.branch.findMany();
 }
@@ -32,4 +31,8 @@ export async function deleteBranch(branchId: string) {
             id: branchId
         }
     });
+}
+
+export async function getAllUsers() {
+    return await prismaClient.user.findMany();
 }
