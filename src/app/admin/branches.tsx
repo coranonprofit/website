@@ -48,9 +48,8 @@ export default function BranchManagement() {
     const [branches, setBranches] = React.useState<any[] | undefined>(undefined);
 
     React.useEffect(() => {
-        if (branches != undefined) return;
         getAllBranches().then(setBranches);
-    }, [branches]);
+    }, []);
 
     if (branches == undefined) return <Loader />
 
