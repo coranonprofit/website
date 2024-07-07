@@ -1,29 +1,10 @@
 "use client";
 
-import { Avatar, Button, Center, Checkbox, Loader, Select, Stack, Table, TableTbody, TableTd, TableTh, TableThead, TableTr } from "@mantine/core";
+import { Avatar, Button, Center, Loader, Table, TableTbody, TableTd, TableTh, TableThead, TableTr } from "@mantine/core";
 import React from "react";
-import { updateUser } from "../serverutil";
-import { useForm } from "@mantine/form";
 import { modals } from "@mantine/modals";
 import { useAdminData } from "../hooks";
-
-function UserEditForm(props: { user: any, branches: any[] }) {
-    const form = useForm({
-        mode: 'uncontrolled',
-        initialValues: props.user
-    });
-
-    const onSubmit = () => {
-        updateUser(form.getValues())
-        modals.closeAll();
-    };
-
-    return <Stack>
-        <Select label="Branch" data={props.branches.map(branch => ({ label: branch.name, value: branch.id }))} {...form.getInputProps("branchId")} />
-        <Checkbox label="Administrator" {...form.getInputProps('admin', { type: 'checkbox' })} />
-        <Button onClick={onSubmit}>Update User</Button>
-    </Stack>
-}
+import { EditUserForm } from "./EditUserForm";
 
 export default function UserManagement() {
     const { users, branches, refreshUsers } = useAdminData();
@@ -31,7 +12,12 @@ export default function UserManagement() {
     if (!users || !branches) return <Center><Loader /></Center>
 
     const editUserModal = (user: any) => {
-        modals.open({ title: `Edit ${user.name}`, size: "xl", children: <UserEditForm user={user} branches={branches} />, onClose: refreshUsers })
+        modals.open({ 
+            title: `Edit ${user.name}`, 
+            size: "xl", 
+            children: <EditUserForm user={user} branches={branches} />, 
+            onClose: refreshUsers 
+        })
     };
 
     return <Table>
