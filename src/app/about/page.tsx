@@ -1,15 +1,7 @@
 import { Accordion, AccordionControl, AccordionItem, AccordionPanel, Center, Container, Title } from "@mantine/core";
+import content from "./about.json";
 
 export default function AboutPage() {
-
-  const content = [
-    {label: "Who are we?", content: "CORA, or the Community Outreach and Restoration Association, is a volunteer group based in Minnesota with students from the US and Canada involved. In the past we have had events such as food drives, volunteering at local organizations, fundraisers, and more! We focus on initiating opportunities for students to volunteer and do good for their community. \n\nIn total, we have over 200 students and growing! Please contact coranonprofit@gmail.com or reference our start-a-branch info below for more info on how you can start your own branch of CORA."},
-    {label: "Who runs CORA?", content: "CORA is dedicated to being 100% student-run. All events, meetings, and resources are student organized. We have a board of directors and executive committees that help make the organization run smoothly as a whole. Our amazing branch directors/presidents help make sure each branch operates smoothly. Please feel free to email coranonprofit@gmail.com to access out bylaws or if you have any questions."},
-    {label: "What are CORA's fees/dues?", content: "None! Here at CORA, we don't believe people should have to pay to do good. CORA branches and members do not have any form of due or fee payed to CORA executive. All funding is obtained either through fundraising and our amazing company sponsorships!"},
-    {label: "How do I start a branch?", content: "So, you want to make the world a better place! Please fill out the interest form. From there, CORA executive team will schedule an interview with you and help you get things started. The process typically involves recruiting founding members and setting up your first event. From there, CORA will continue to give any guidance or financial support required to help your branch succeed!"},
-    {label: "Is CORA a nonprofit organization?", content: "Yes! CORA is a legally registered nonprofit corporation in the state of Minnesota. Please contact CORA executive team for more info on CORA's legal status."}
-  ];
-
   return <Container>
     <Center><Title my="xl">About / FAQ</Title></Center>
 
