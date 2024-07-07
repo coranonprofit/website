@@ -1,13 +1,14 @@
 "use client";
+
 import '@mantine/core/styles.css';
 import { ModalsProvider } from '@mantine/modals';
-import { Avatar, Button, MantineProvider, Menu, MenuDropdown, MenuItem, MenuLabel, MenuTarget } from '@mantine/core';
+import { MantineProvider } from '@mantine/core';
 
 import { AppShell, AppShellHeader, AppShellMain, Group, Image, Text } from "@mantine/core";
 import Link from "next/link";
-import { signIn, signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { AccountIcon } from './components/AccountIcon';
 
 const queryClient = new QueryClient();
 
@@ -36,7 +37,7 @@ export function PageLayout(props: {
                         {Object.entries(links).map(([pageName, pageLink]) => <Text key={pageName} component={Link} href={pageLink}>
                             {pageName}
                         </Text>)}
-                        <AccountManager />
+                        <AccountIcon />
                     </Group>
                 </Group>
             </AppShellHeader>
@@ -50,23 +51,4 @@ export function PageLayout(props: {
             </AppShellMain>
         </AppShell>
     </MantineProvider>
-}
-
-function AccountManager() {
-    const { data: session } = useSession();
-
-    if (!session) {
-        return <Button onClick={() => signIn()}>Login</Button>
-    }
-
-    return <Menu>
-        <MenuTarget>
-            <Avatar src={session?.user?.image} />
-        </MenuTarget>
-        <MenuDropdown>
-            <MenuLabel>Hello, {session?.user?.name}</MenuLabel>
-            <MenuItem component={Link} href="/account">My Account</MenuItem>
-            <MenuItem onClick={() => signOut()}>Logout</MenuItem>
-        </MenuDropdown>
-    </Menu>
 }
