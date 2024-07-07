@@ -1,9 +1,10 @@
 import { useForm } from "@mantine/form";
 import { updateUser } from "../serverutil";
 import { modals } from "@mantine/modals";
-import { Button, Checkbox, Select, Stack } from "@mantine/core";
+import { Button, Checkbox, Stack } from "@mantine/core";
+import { BranchSelect } from "@/app/components/BranchSelect.client";
 
-export function EditUserForm(props: { user: any, branches: any[] }) {
+export function EditUserForm(props: { user: any }) {
     const form = useForm({
         mode: 'uncontrolled',
         initialValues: props.user
@@ -15,7 +16,7 @@ export function EditUserForm(props: { user: any, branches: any[] }) {
     };
 
     return <Stack>
-        <Select label="Branch" data={props.branches.map(branch => ({ label: branch.name, value: branch.id }))} {...form.getInputProps("branchId")} />
+        <BranchSelect label="Branch" {...form.getInputProps("branchId")} />
         <Checkbox label="Administrator" {...form.getInputProps('admin', { type: 'checkbox' })} />
         <Button onClick={onSubmit}>Update User</Button>
     </Stack>

@@ -12,11 +12,11 @@ export default function UserManagement() {
     if (!users || !branches) return <Center><Loader /></Center>
 
     const editUserModal = (user: any) => {
-        modals.open({ 
-            title: `Edit ${user.name}`, 
-            size: "xl", 
-            children: <EditUserForm user={user} branches={branches} />, 
-            onClose: refreshUsers 
+        modals.open({
+            title: `Edit ${user.name}`,
+            size: "xl",
+            children: <EditUserForm user={user} />,
+            onClose: refreshUsers
         })
     };
 
