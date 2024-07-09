@@ -1,6 +1,5 @@
 import { Avatar, Button, Menu, MenuDropdown, MenuItem, MenuLabel, MenuTarget } from "@mantine/core";
-import { useSession } from "next-auth/react";
-import { signIn, signOut } from "../auth";
+import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 
 export function AccountIcon() {
