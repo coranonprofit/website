@@ -5,10 +5,16 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
+import usaMap from "@public/images/elements/usa.svg";
+import Slideshow from "@/components/Slideshow";
+import { BranchesMenuContext } from "@/lib/context";
 
 export default function MainPage() {
   return (
     <>
+      <Hero />
+
       <NavBar />
 
       <main>
@@ -38,7 +44,7 @@ export default function MainPage() {
           </div>
           
           <div className={styles.content}>
-            <Image src="/images/group2.jpg" alt="Group photo 2" fill />
+            <Image src="/images/photos/group2.jpg" alt="Group photo 2" fill />
           </div>
         </Container>
 
@@ -64,7 +70,7 @@ export default function MainPage() {
         <Container style={{height: "min-content"}}>
           <div className={styles.mixed}>
             <div>
-              <Image src="/images/coraInNews.png" alt="CORA in the news" fill />
+              <Image src="/images/photos/coraInNews.png" alt="CORA in the news" fill />
             </div>
             <Link href="https://www.wdio.com/front-page/top-stories/students-from-cora-group-collected-items-for-proctor-food-shelf/">
               <h3>CORA in the news</h3>
@@ -81,7 +87,7 @@ export default function MainPage() {
 
           <div className={styles.mixed}>
             <div>
-              <Image src="/images/group3.jpg" alt="Group photo 3" fill />
+              <Image src="/images/photos/group3.jpg" alt="Group photo 3" fill />
             </div>
             <Link href="/join">
               <h3>Start a branch today</h3>
@@ -96,11 +102,59 @@ export default function MainPage() {
             </small>
           </div>
         </Container>
+
+        <InteractiveMap locations={[]} />
       </main>
 
       <Footer />
     </>
   ) 
+}
+
+function Hero() {
+
+  const { setIsBranchesOpen } = useContext(BranchesMenuContext);
+
+  return(
+    <div className={styles.hero}>
+
+      <div className={styles.minisignin}>
+        <button onClick={() => setIsBranchesOpen(true)}>
+          Branches
+        </button>
+
+        <Link href="/student">
+          Sign In 
+        </Link>
+      </div>
+
+      <div className={styles.greeting}>
+        <h1>CORA</h1>
+        <small>(Community Outreach & Restoration Association)</small> 
+
+        <p>
+          A nationwide non-profit, our mission is to better our local 
+          communities through student initiatives.
+        </p>
+
+        <footer className={styles.minibar}>
+          <Link href="/about">About</Link> 
+          <Link href="/contact">Contact</Link>  
+          <Link href="/donate">Donate</Link>
+          <Link href="/join">Join</Link> 
+        </footer>
+      </div>
+
+      <Slideshow
+        images={[
+          "/images/photos/coraInNews.png",
+          "/images/photos/group1.jpg",
+          "/images/photos/group2.jpg",
+          "/images/photos/group3.jpg",
+        ]}
+      />
+    </div>
+  )
 }
 
 function Container({
@@ -112,8 +166,43 @@ function Container({
 }) {
   return (
     <section className={styles.container} style={style}>
-      <div className={styles.content}>
+      <div>
         {children}
+      </div>
+    </section>
+  )
+}
+
+type location = {
+  name: string;
+  longitude: any;
+  latitude: any;
+}
+function InteractiveMap({
+  locations
+}: {
+  locations: location[]
+}) {
+  return (
+    <section className={styles.map}>
+      <div>
+        <div>
+          <Image src={usaMap} alt="US map" fill />
+        </div>
+  
+        {
+          locations.map(({
+            name,
+            longitude,
+            latitude,
+          }: location) => {
+            return (
+              <Link href={`/branches/${name}`}>
+
+              </Link>
+            )
+          })
+        }
       </div>
     </section>
   )
