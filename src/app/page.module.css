@@ -140,48 +140,59 @@
     top: 0px;
     left: 0px;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 2fr 7fr;
     height: 100vh;     
 }
 .greeting {
     position: relative; 
-    background: var(--theme-primary);
+    background: var(--background-secondary);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 30px;
+    padding: 0 16px;
+    box-shadow: 4px 0 16px rgba(0,0,0,0.125);
+    z-index: 5;
 
     & > h1 {
+        position: relative;
+        color: var(--text-color-secondary);
         font-family: var(--text-font-heavy);
         font-size: 300px;
-        font-weight: 600;
+        font-weight: 700;
         line-height: 300px;
         margin-bottom: 0;
-        margin-top: 190px;
+        letter-spacing: -16px;
+        right: 16px;
+        background: var(--theme-primary);
+        padding: 190px 32px 32px;
+        margin: 0 -32px -32px;
     }
 
     & > small {
-        margin-top: 4px;
         font-family: var(--text-font-heavy);
         font-size: var(--text-font-size);
-        font-weight: 350;
+        font-weight: 400;
+        z-index: 0;      
+        color: var(--text-color-secondary)
     }
 
     & > p {
         font-size: var(--text-font-size);
-        margin-top: 60px;
-        padding: 0 10px;
+        margin-top: 48px;
+        padding: 0 32px;
         text-align: center
     }
 }
 .minibar {
     position: absolute;
     bottom: 0px;
-    padding: 16px 24px 0;
-    margin-bottom: 36px;
+    width: 100%;
+    height: min-content;
+    justify-content: center;
+    padding: 32px 24px 48px;
     display: flex;
-    border-top: solid var(--background-primary) 1.5px;
-    gap: 112px;
+    box-shadow: 0 0 32px rgba(0,0,0,0.1); 
+    gap: 96px;
 
     & > a {
         color: var(--text-color);
@@ -208,16 +219,18 @@
         align-items: center;
         padding: 8px 18px;
         cursor: pointer;
-        background: white;
+        background: var(--background-secondary);
+        font-weight: 500;
     }
 
     & > a {
         background: var(--theme-primary);
-        color: white;
+        color: var(--text-color-secondary);
         height: inherit;
         display: flex;
         align-items: center;
         padding: 10px 22px;
         text-decoration: none;
+        font-weight: 500;
     }
 }

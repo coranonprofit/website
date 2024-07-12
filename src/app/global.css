@@ -8,6 +8,7 @@
     */
     --text-font-size: 13.5pt;
     --text-color: black; 
+    --text-color-secondary: white;
 }
 html, body {
     margin: 0px;

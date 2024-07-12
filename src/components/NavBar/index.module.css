@@ -46,6 +46,7 @@
 .links > a {
     color: black;
     text-decoration: none;
+    font-weight: 500;
 }
 .branches {
     height: 100%;
@@ -56,6 +57,7 @@
     cursor:pointer;
     box-shadow: -2px 0 16px rgba(0,0,0, 0.05);
     margin-left: 4px;
+    font-weight: 500;
 }
 .signIn {
     background: var(--theme-primary);
@@ -66,4 +68,5 @@
     align-items: center;
     padding: 10px 22px;
     text-decoration: none;
+    font-weight: 500;
 }
