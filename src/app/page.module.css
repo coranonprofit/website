@@ -142,6 +142,8 @@
     display: grid;
     grid-template-columns: 2fr 7fr;
     height: 100vh;     
+    overflow: hidden;
+    box-shadow: 0 0 24px rgba(0,0,0,0.1); 
 }
 .greeting {
     position: relative; 
@@ -189,9 +191,9 @@
     width: 100%;
     height: min-content;
     justify-content: center;
-    padding: 32px 24px 48px;
+    padding: 32px 24px;
     display: flex;
-    box-shadow: 0 0 32px rgba(0,0,0,0.1); 
+    box-shadow: 0 0 24px rgba(0,0,0,0.1); 
     gap: 96px;
 
     & > a {
@@ -233,4 +235,8 @@
         text-decoration: none;
         font-weight: 500;
     }
+}
+.spacer {
+    border: none;
+    margin: 60px 0;
 }
