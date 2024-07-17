@@ -1,5 +1,6 @@
 :root{
     --theme-primary: rgb(245, 131, 55);
+    --theme-primary-lightened: rgb(255, 146, 73);
     --background-primary: rgb(0,0,0);
     --background-secondary: rgb(255,255,255);
     /* these fonts are imported in the root layout, this is a placeholder.

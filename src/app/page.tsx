@@ -9,12 +9,14 @@ import { useContext } from "react";
 import usaMap from "@public/images/elements/usa.svg";
 import Slideshow from "@/components/Slideshow";
 import { BranchesMenuContext } from "@/lib/context";
+import BranchesMenu from "@/components/BranchesMenu";
 
 export default function MainPage() {
   return (
       <>
           <Hero />
 
+          <BranchesMenu />
           <NavBar />
 
           <main>
