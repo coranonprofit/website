@@ -142,39 +142,41 @@ function Hero() {
   const { setIsBranchesOpen } = useContext(BranchesMenuContext);
 
   return (
-      <div className={styles.hero}>
-          <div className={styles.minisignin}>
-              <button onClick={() => setIsBranchesOpen(true)}>Branches</button>
+		<div className={styles.hero}>
+			<div className={styles.minisignin}>
+				<button onClick={() => setIsBranchesOpen(true)}>
+					Branches
+				</button>
 
-              <Link href="/student">Sign In</Link>
-          </div>
+				<Link href="/student">Sign In</Link>
+			</div>
 
-          <div className={styles.greeting}>
-              <h1>CORA</h1>
-              <small>Community Outreach & Restoration Association</small>
+			<div className={styles.greeting}>
+				<h1>CORA</h1>
+				<small>Community Outreach & Restoration Association</small>
 
-              <p>
-                  A nationwide non-profit, our mission is to better our local
-                  communities through student initiatives.
-              </p>
+				<p>
+					A nationwide non-profit, our mission is to better our local
+					communities through student initiatives.
+				</p>
 
-              <footer className={styles.minibar}>
-                  <Link href="/about">About</Link>
-                  <Link href="/contact">Contact</Link>
-                  <Link href="/donate">Donate</Link>
-                  <Link href="/join">Join</Link>
-              </footer>
-          </div>
+				<footer className={styles.minibar}>
+					<Link href="/exec">Executive</Link>
+					<Link href="/contact">Contact</Link>
+					<Link href="/donate">Donate</Link>
+					<Link href="/branches/join">Join</Link>
+				</footer>
+			</div>
 
-          <Slideshow
-              images={[
-                  "/images/photos/coraInNews.png",
-                  "/images/photos/group1.jpg",
-                  "/images/photos/group2.jpg",
-                  "/images/photos/group3.jpg",
-              ]}
-          />
-      </div>
+			<Slideshow
+				images={[
+					"/images/photos/coraInNews.png",
+					"/images/photos/group1.jpg",
+					"/images/photos/group2.jpg",
+					"/images/photos/group3.jpg",
+				]}
+			/>
+		</div>
   );
 }
 

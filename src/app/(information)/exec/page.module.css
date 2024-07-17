@@ -1,0 +1,165 @@
+.topHeader {
+    position: relative;
+    width: 100%;
+    height: max-content;
+    padding: 128px 48px 24px;
+    background: var(--theme-primary);
+
+    & > h1 {
+        position: relative;
+        font-family: var(--text-font-heavy);
+        font-size: 100px;
+        font-weight: 700;
+        line-height: 100px;
+        letter-spacing: -4px;
+        margin: 0;
+        color: white;
+    }
+
+    & > hr {
+        position: relative;
+        border: 1px var(--theme-primary-lightened) solid;
+        margin: 12px 20px 0px;
+        width: 400px;
+    }
+
+    & > img {
+        object-fit: cover;
+        z-index: 0;
+    }
+}
+.main {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto 128px;
+
+    & > h1 {
+        font-family: var(--text-font-heavy);
+        font-size: 60px;
+        line-height: 60px;
+        font-weight: 500;
+        margin-top: 48px;
+        margin-bottom: 0;
+    }
+
+    & > hr {
+        margin-top: 8px;
+        border: 1px solid var(--theme-primary-lightened);
+        width: 140px;
+        margin-left: 12px;
+    }
+
+    & > p {
+        margin-left: 64px;
+        text-indent: 32px;
+
+        & > a {
+            color: var(--text-color);
+            margin: 0 4px;
+        }
+    }
+
+    & > section {
+        padding: 32px 64px 0;
+
+        & > h2 {
+            font-family: var(--text-font-heavy);
+            font-size: 40px;
+            line-height: 40px;
+            font-weight: 400;
+            margin: 0;
+        }
+    }
+}
+.directorsBoard {
+    padding: 8px 32px;
+
+    & > div {
+        position: relative;
+        margin: 32px 0;
+
+        & > h3 {
+            font-size: 15pt;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        & > h4 {
+            font-size: var(--text-font-size);
+            font-weight: 400;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        & > a {
+            position: relative;
+            left: 8px;
+            margin: 0;
+            display: block;
+            width: max-content;
+            color: var(--text-color);
+        }
+
+        & > small {
+            font-size: 12.5pt;
+            position: relative;
+            left: 8px;
+        }
+    }
+
+    & > div:first-child {
+        margin-top: 12px;
+    }
+
+    & > div:last-child {
+        margin-bottom: 12px;
+    }
+}
+.executiveTeam {
+    padding: 0 32px;
+    & > div {
+        position: relative;
+        margin: 32px 0;
+
+        & > h3 {
+            font-size: 15pt;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        & > h4 {
+            font-size: var(--text-font-size);
+            font-weight: 400;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+    }
+
+    & > ul {
+        & > li {
+            font-weight: 500;
+            font-size: var(--text-font-size);
+
+            &::marker {
+                content:"- ";
+                color: var(--theme-primary-lightened);
+                font-size: 30px;
+            }
+
+            & > span {
+                position: relative;
+                bottom: 2px;
+            }
+
+        }
+    }
+}
+.legalBylaws {
+    margin-left: 32px;
+    text-indent: 32px;
+
+    & > a {
+        margin: 0 4px;
+        color: var(--text-color);
+    }
+}
