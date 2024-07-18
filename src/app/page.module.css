@@ -90,6 +90,7 @@
         font-weight: 500;
         font-size: 50px;
         margin: 16px 0;
+        text-decoration: underline 1px;
         transition: 
             transform 0.25s ease-out,
             text-shadow 0.2s ease-out;

@@ -115,7 +115,7 @@ export default function MainPage() {
 								fill
 							/>
 						</div>
-						<Link href="/join">
+						<Link href="/branches/join">
 							<h3>Start a branch today</h3>
 						</Link>
 

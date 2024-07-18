@@ -1,0 +1,26 @@
+.main {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto 128px;
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > p {
+        text-indent: 32px;
+        margin-top: 32px;
+        width: 100%;
+
+        & > a {
+            color: var(--text-color);
+            margin: 0 4px;
+        }
+    }
+
+    & > iframe {
+        position: relative;
+        width: 1000px;
+        height: 80vh;
+    }
+}
