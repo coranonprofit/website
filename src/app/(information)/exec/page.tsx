@@ -1,20 +1,12 @@
 "use client";
 
+import DecorativeHeader from "@/components/DecorativeHeader";
 import styles from "./page.module.css";
-import Image from "next/image";
 
 export default function ExecutivePage() {
 	return (
 		<>
-			<header className={styles.topHeader}>
-				<Image
-					src="/images/elements/grayMapHeader.png"
-					alt="Decorative Header"
-					fill
-				/>
-				<h1>CORA Executive</h1>
-				<hr />
-			</header>
+			<DecorativeHeader>CORA Executive</DecorativeHeader>
 
 			<main className={styles.main}>
 				<h1>Our People</h1>
