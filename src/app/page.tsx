@@ -19,8 +19,7 @@ export default function MainPage() {
 			<BranchesMenu />
 			<NavBar />
 
-			<main>
-				<hr className={styles.spacer} />
+			<main className={styles.main}>
 				<Container>
 					<div className={styles.content}>
 						<Image
@@ -130,6 +129,8 @@ export default function MainPage() {
 						</small>
 					</div>
 				</Container>
+
+				<hr />
 
 				<InteractiveMap locations={[]} />
 			</main>

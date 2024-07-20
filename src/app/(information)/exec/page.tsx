@@ -100,6 +100,17 @@ export default function ExecutivePage() {
 				</p>
 
 				<section>
+					<h2>What are CORA's fees / dues?</h2>
+					<p className={styles.fees}>
+						None! Here at CORA, we don't believe people should have
+						to pay to do good. CORA branches and members do not have
+						any form of due or fee payed to CORA executive. All
+						funding is obtained either through fundraising and our
+						amazing company sponsorships!
+					</p>
+				</section>
+
+				<section>
 					<h2>Legal Status & Bylaws</h2>
 					<p className={styles.legalBylaws}>
 						Shoot our Board secretary an email at
