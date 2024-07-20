@@ -59,7 +59,7 @@ export default function BranchesMenu() {
 
 			<div className={styles.selector}>
 				<Link
-					href={"/branches"}
+					href={"/branches/join"}
 					style={{ alignItems: "center" }}
 				>
 					<h4 style={{ width: "max-content" }}>
