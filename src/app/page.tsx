@@ -31,7 +31,7 @@ export default function MainPage() {
 
 					<div className={styles.text}>
 						<h1>100%</h1>
-						<h2>Student Lead</h2>
+						<h2>Student Led</h2>
 						<p>
 							100% of all events, projects, meetings, and ideas
 							are initiated and run by our amazing student
